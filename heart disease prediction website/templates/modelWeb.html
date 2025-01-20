@@ -33,6 +33,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            min-height: 50vh; /* Ensures it stretches for larger content */
+            overflow: auto; /* Allows scrolling if content overflows */
         }
 
         .input-hint {
@@ -63,10 +65,19 @@
         }
 
         h1 {
-            margin-top: 250px;
+            margin-top: 20px;
             text-align: center;
             color: #333;
         }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f8ff; /* Light blue background */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -76,38 +87,45 @@
             <label for="age">Age:</label>
             <input type="text" id="age" name="age" placeholder="Input age" required>
             <span class="input-hint">Enter age in years</span>
-
+    
             <label for="gender">Gender:</label>
             <input type="text" id="gender" name="gender" placeholder="Input gender" required>
             <span class="input-hint">1 for male, 0 for female</span>
-
+    
             <label for="heart_rate">Heart Rate:</label>
             <input type="text" id="heart_rate" name="heart_rate" placeholder="Input heart rate" required>
             <span class="input-hint">Enter heart rate in beats per minute</span>
-
+    
             <label for="systolic_bp">Systolic Blood Pressure:</label>
             <input type="text" id="systolic_bp" name="systolic_bp" placeholder="Input systolic blood pressure" required>
             <span class="input-hint">Measure in mmHg</span>
-
+    
             <label for="diastolic_bp">Diastolic Blood Pressure:</label>
             <input type="text" id="diastolic_bp" name="diastolic_bp" placeholder="Input diastolic blood pressure" required>
             <span class="input-hint">Measure in mmHg</span>
-
+    
             <label for="blood_sugar">Blood Sugar:</label>
             <input type="text" id="blood_sugar" name="blood_sugar" placeholder="Input blood sugar" required>
             <span class="input-hint">Blood sugar in mg/dL</span>
-
+    
             <label for="ck_mb">CK-MB:</label>
             <input type="text" id="ck_mb" name="ck_mb" placeholder="Input CK-MB" required>
             <span class="input-hint">Enzyme levels in U/L</span>
-
+    
             <label for="troponin">Troponin:</label>
             <input type="text" id="troponin" name="troponin" placeholder="Input troponin" required>
             <span class="input-hint">Protein level indicating heart muscle damage</span>
-
+    
             <button type="submit">PREDICT HEART ATTACK PROBABILITY</button>
         </form>
-    </div>
+    
+        <!-- Prediction Output -->
+        {% if prediction_text %}
+        <div id="output">
+            <p><strong>{{ prediction_text }}</strong></p>
+        </div>
+        {% endif %}
+    </div>    
 </body>
 </html>
 
